@@ -3,10 +3,53 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Phone, phones } from './data/phones';
+import { makeObservable, observable, action, computed } from 'mobx';
+
+class PhoneStore {
+  smartPhones: Phone[] = phones
+  wishlist: Phone[] = []
+  shoppingCart: Phone[] = []
+  funds = 0
+  get cartTotal() {
+    let total = 0;
+    this.shoppingCart.forEach(phone => total += phone.priceInDollars);
+    return total;
+  }
+
+  constructor() {
+    makeObservable(this, {
+      wishlist: observable,
+      shoppingCart: observable,
+      funds: observable,
+      addToWishlist: action,
+      addToShoppingCart: action,
+      addFunds: action,
+      cartTotal: computed
+    })
+  }
+
+  addToWishlist(phone: Phone) {
+    this.wishlist.push(phone);
+  }
+
+  addToShoppingCart(phone: Phone) {
+    this.shoppingCart.push(phone);
+  }
+
+  addFunds(funds: number) {
+    this.funds += funds;
+  }
+}
+
+const store = new PhoneStore();
+const StoreContext = React.createContext<PhoneStore>(store);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StoreContext.Provider value={store}>
+      <App />
+    </StoreContext.Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

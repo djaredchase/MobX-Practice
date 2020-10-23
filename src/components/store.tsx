@@ -1,0 +1,9 @@
+import React from 'react';
+
+export const Store:React.FC = () => {
+    return(
+        <div>
+            Store component
+        </div>
+    )
+}
