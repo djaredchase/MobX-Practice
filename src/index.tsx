@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -43,7 +43,7 @@ class PhoneStore {
 }
 
 const store = new PhoneStore();
-const StoreContext = React.createContext<PhoneStore>(store);
+export const StoreContext = createContext<PhoneStore>(store);
 
 ReactDOM.render(
   <React.StrictMode>

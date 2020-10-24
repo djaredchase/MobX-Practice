@@ -13,7 +13,7 @@ function App() {
       <div className='store'>
         <Store/>
       </div>
-      <div className='shoppingCart'>
+      <div className='shopping-cart'>
         <ShoppingCart/>
       </div>
     </div>
