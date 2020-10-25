@@ -1,11 +1,11 @@
-.store-container {
+.side-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-direction: column;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.store-card {
+.side-card {
     width: 300px;
     height: 175px;
     background-color: white;
