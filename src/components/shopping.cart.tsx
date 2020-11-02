@@ -5,11 +5,8 @@ import { StoreContext } from '..';
 
 export const ShoppingCart: React.FC = observer(() => {
     const store = useContext(StoreContext);
-    const removeItem = () => {
 
-    }
-
-    return(
+    return (
         <div>
             <h2>Shopping cart component</h2>
             <div className='side-container'>
@@ -22,8 +19,8 @@ export const ShoppingCart: React.FC = observer(() => {
                             <li>Storage: {phone.storageGB}gb</li>
                             <li>RAM: {phone.ramGB}gb</li>
                             <li>Price: ${phone.priceInDollars}</li>
+                            <button onClick={() => store.removeFromShoppingCart(phone)}>Remove</button>
                         </ul>
-                        <button>Remove</button>
                     </div>)}
             </div>
         </div>

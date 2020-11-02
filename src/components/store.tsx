@@ -2,28 +2,34 @@ import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '../index';
 import './store.css';
+import { Phone } from '../data/phones';
 
 export const Store: React.FC = observer(() => {
     const store = useContext(StoreContext);
 
-    //TODO move these functions that change obervable arrays to the MobX store and make them actions
-    const addToWishlist = (model: string) => {
-        const phone = store.smartPhones.find(p => p.model == model) || store.wishlist[0];
-        if(store.wishlist.includes(phone)) {
-            console.log('already there');
+    //Creating these arrays to implememnt checking for phone in a list before adding it to the list
+    //"store.wishlist.includes(phone)" is returning false even after the phone has
+    //been pushed to the array
+    //still adding to the arrays in the MobX store as well of course though
+    const wishlist = new Array();
+    const cart = new Array();
+    
+    const addToWishlist = (phone: Phone) => {
+        if (wishlist.includes(phone)) {
             alert('This phone is already in your wishlist!');
-        }else {
-            store.wishlist.push(phone);
-            console.log('adding to list');
+        } else {
+            store.addToWishlist(phone);
+            wishlist.push(phone);
         }
     }
 
-    const addToShoppingCart = (model: string) => {
-        const phone = store.smartPhones.find(p => p.model == model) || store.shoppingCart[0];
-        if(store.shoppingCart.includes(phone)) {
+    const addToShoppingCart = (phone: Phone) => {
+        if (cart.includes(phone)) {
             alert('You can only buy one of each phone at a time!');
+        } else {
+            store.addToShoppingCart(phone);
+            cart.push(phone);
         }
-        store.shoppingCart.push(phone);
     }
 
     return (
@@ -39,8 +45,8 @@ export const Store: React.FC = observer(() => {
                             <li>Storage: {phone.storageGB}gb</li>
                             <li>RAM: {phone.ramGB}gb</li>
                             <li>Price: ${phone.priceInDollars}</li>
-                            <button onClick={() => addToWishlist(phone.model)} >Add to wishlist</button>
-                            <button onClick={() => addToShoppingCart(phone.model)}>Add to cart</button>
+                            <button onClick={() => addToWishlist(phone)} >Add to wishlist</button>
+                            <button onClick={() => addToShoppingCart(phone)}>Add to cart</button>
                         </ul>
                     </div>)}
             </div>

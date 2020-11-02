@@ -25,12 +25,18 @@ class PhoneStore {
       addToWishlist: action,
       addToShoppingCart: action,
       addFunds: action,
+      removeFromWishlist: action,
+      removeFromShoppingCart: action,
       cartTotal: computed
     })
   }
 
   addToWishlist(phone: Phone) {
-    this.wishlist.push(phone);
+    if(this.wishlist.includes(phone)) {
+      alert('This phone is already in your wishlist!');
+    }else {
+      this.wishlist.push(phone);
+    }
   }
 
   addToShoppingCart(phone: Phone) {
@@ -39,6 +45,16 @@ class PhoneStore {
 
   addFunds(funds: number) {
     this.funds += funds;
+  }
+
+  removeFromWishlist(phone: Phone) {
+    const index = this.wishlist.indexOf(phone);
+    this.wishlist.splice(index, 1);
+  }
+
+  removeFromShoppingCart(phone: Phone) {
+    const index = this.shoppingCart.indexOf(phone);
+    this.shoppingCart.splice(index, 1);
   }
 }
 

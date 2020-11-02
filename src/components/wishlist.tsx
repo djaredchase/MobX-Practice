@@ -19,6 +19,7 @@ export const WishList: React.FC = observer(() => {
                             <li>Storage: {phone.storageGB}gb</li>
                             <li>RAM: {phone.ramGB}gb</li>
                             <li>Price: ${phone.priceInDollars}</li>
+                            <button onClick={() => store.removeFromWishlist(phone)}>Remove</button>
                         </ul>
                     </div>)}
             </div>

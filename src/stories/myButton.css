@@ -1,0 +1,9 @@
+.storybook-mybutton--primary {
+    color: white;
+    background-color: green;
+}
+
+.storybook-mybutton--secondary {
+    color: white;
+    background-color: red;
+}
