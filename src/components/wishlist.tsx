@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '..';
 import './side.panel.css';
+import { MyButton } from '../stories/myButton';
+import { Card } from '../stories/Card';
 
 export const WishList: React.FC = observer(() => {
     const store = useContext(StoreContext);
@@ -11,7 +13,7 @@ export const WishList: React.FC = observer(() => {
             <h2>Wishlist Component</h2>
             <div className='side-container'>
                 {store.wishlist.map(phone =>
-                    <div key={phone.model} className='side-card'>
+                    <Card main={false} key={phone.model}>
                         <ul>
                             <li>Make: {phone.make}</li>
                             <li>Model: {phone.model}</li>
@@ -19,9 +21,10 @@ export const WishList: React.FC = observer(() => {
                             <li>Storage: {phone.storageGB}gb</li>
                             <li>RAM: {phone.ramGB}gb</li>
                             <li>Price: ${phone.priceInDollars}</li>
-                            <button onClick={() => store.removeFromWishlist(phone)}>Remove</button>
+                            {/* <button onClick={() => store.removeFromWishlist(phone)}>Remove</button> */}
+                            <MyButton primary={false} onClick={() => store.removeFromWishlist(phone)}>Remove</MyButton>
                         </ul>
-                    </div>)}
+                    </Card>)}
             </div>
         </div>
     )

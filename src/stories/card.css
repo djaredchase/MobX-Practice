@@ -1,0 +1,15 @@
+.storybook-card--primary {
+    background-color: lightgray;
+    width: 275px;
+    height: 175px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.storybook-card--secondary {
+    background-color: lightgray;
+    width: 175px;
+    height: 225px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}

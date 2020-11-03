@@ -4,21 +4,21 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { MyButton, MyButtonProps } from './myButton';
 
 export default {
-    title: 'Test/MyButton',
+    title: 'My Stuff/MyButton',
     component: MyButton
 } as Meta;
 
 const Template: Story<MyButtonProps> = (args) => <MyButton {...args}/>
 
-export const AddToWishlist = Template.bind({});
-AddToWishlist.args = {
+export const WishlistButton = Template.bind({});
+WishlistButton.args = {
     primary: true,
     label: 'Add to wishlist'
 }
 
-export const AddToShoppingCart = Template.bind({});
-AddToShoppingCart.args = {
-    ...AddToWishlist.args,
+export const ShoppingCartButton = Template.bind({});
+ShoppingCartButton.args = {
+    ...WishlistButton.args,
     label: 'Add to shopping cart'
 }
 

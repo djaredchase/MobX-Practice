@@ -3,6 +3,8 @@ import { observer } from 'mobx-react-lite';
 import { StoreContext } from '../index';
 import './store.css';
 import { Phone } from '../data/phones';
+import { MyButton } from '../stories/myButton';
+import { Card } from '../stories/Card';
 
 export const Store: React.FC = observer(() => {
     const store = useContext(StoreContext);
@@ -10,10 +12,10 @@ export const Store: React.FC = observer(() => {
     //Creating these arrays to implememnt checking for phone in a list before adding it to the list
     //"store.wishlist.includes(phone)" is returning false even after the phone has
     //been pushed to the array
-    //still adding to the arrays in the MobX store as well of course though
+    //so I'm adding to these arrays as well as the ones in the store
     const wishlist = new Array();
     const cart = new Array();
-    
+
     const addToWishlist = (phone: Phone) => {
         if (wishlist.includes(phone)) {
             alert('This phone is already in your wishlist!');
@@ -37,7 +39,7 @@ export const Store: React.FC = observer(() => {
             <h2>Store Component</h2>
             <div className='store-container'>
                 {store.smartPhones.map(phone =>
-                    <div key={phone.model} className='store-card'>
+                    <Card key={phone.model} main={true}>
                         <ul>
                             <li>Make: {phone.make}</li>
                             <li>Model: {phone.model}</li>
@@ -45,10 +47,12 @@ export const Store: React.FC = observer(() => {
                             <li>Storage: {phone.storageGB}gb</li>
                             <li>RAM: {phone.ramGB}gb</li>
                             <li>Price: ${phone.priceInDollars}</li>
-                            <button onClick={() => addToWishlist(phone)} >Add to wishlist</button>
-                            <button onClick={() => addToShoppingCart(phone)}>Add to cart</button>
+                            <MyButton primary={true} onClick={() => addToWishlist(phone)}>Add to wishlist</MyButton>
+                            {/* <button onClick={() => addToWishlist(phone)} >Add to wishlist</button> */}
+                            {/* <button onClick={() => addToShoppingCart(phone)}>Add to cart</button> */}
+                            <MyButton primary={true} onClick={() => addToShoppingCart(phone)}>Add to cart</MyButton>
                         </ul>
-                    </div>)}
+                    </Card>)}
             </div>
         </div>
     )
