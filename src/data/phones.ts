@@ -1,6 +1,7 @@
 export const phones = new Array<Phone>();
 
 const phone1: Phone = {
+    id: 1,
     make: 'Apple',
     model: 'iPhone 11 Pro',
     screenSizeInches: 5.4,
@@ -10,6 +11,7 @@ const phone1: Phone = {
 }
 
 const phone2: Phone = {
+    id: 2,
     make: 'Google',
     model: 'Pixel 4',
     screenSizeInches: 5.5,
@@ -19,6 +21,7 @@ const phone2: Phone = {
 }
 
 const phone3: Phone = {
+    id: 3,
     make: 'Samsung',
     model: 'Note 20',
     screenSizeInches: 7,
@@ -28,6 +31,7 @@ const phone3: Phone = {
 }
 
 const phone4: Phone = {
+    id: 4,
     make: 'Apple',
     model: 'XR',
     screenSizeInches: 6.1,
@@ -37,6 +41,7 @@ const phone4: Phone = {
 }
 
 const phone5: Phone = {
+    id: 5,
     make: 'Apple',
     model: '11',
     screenSizeInches: 6.1,
@@ -46,6 +51,7 @@ const phone5: Phone = {
 }
 
 const phone6: Phone = {
+    id: 6,
     make: 'Google',
     model: 'Pixel 4a',
     screenSizeInches: 6,
@@ -55,6 +61,7 @@ const phone6: Phone = {
 }
 
 const phone7: Phone = {
+    id: 7,
     make: 'Samsung',
     model: 'Fold 2',
     screenSizeInches: 7.6,
@@ -64,6 +71,7 @@ const phone7: Phone = {
 }
 
 const phone8: Phone = {
+    id: 8,
     make: 'Google',
     model: 'Pixel 5',
     screenSizeInches: 6,
@@ -73,6 +81,7 @@ const phone8: Phone = {
 }
 
 const phone9: Phone = {
+    id: 9,
     make: 'Apple',
     model: 'iPhone 12 Pro Max',
     screenSizeInches: 6.7,
@@ -92,6 +101,7 @@ phones.push(phone8);
 phones.push(phone9);
 
 export interface Phone {
+    id: number;
     make: string;
     model: string;
     screenSizeInches: number;

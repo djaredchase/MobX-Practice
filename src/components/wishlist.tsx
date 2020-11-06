@@ -10,10 +10,10 @@ export const WishList: React.FC = observer(() => {
 
     return (
         <div>
-            <h2>Wishlist Component</h2>
+            <h2>Wishlist</h2>
             <div className='side-container'>
                 {store.wishlist.map(phone =>
-                    <Card main={false} key={phone.model}>
+                    <Card main={false} key={Math.random()}>
                         <ul>
                             <li>Make: {phone.make}</li>
                             <li>Model: {phone.model}</li>

@@ -8,6 +8,7 @@ import { makeObservable, observable, action, computed } from 'mobx';
 
 class PhoneStore {
   smartPhones: Phone[] = phones
+  //wishlist array really should not allow duplicates
   wishlist: Phone[] = []
   shoppingCart: Phone[] = []
   funds = 0
@@ -27,14 +28,15 @@ class PhoneStore {
       addFunds: action,
       removeFromWishlist: action,
       removeFromShoppingCart: action,
+      checkout: action,
       cartTotal: computed
     })
   }
 
   addToWishlist(phone: Phone) {
-    if(this.wishlist.includes(phone)) {
+    if (this.wishlist.includes(phone)) {
       alert('This phone is already in your wishlist!');
-    }else {
+    } else {
       this.wishlist.push(phone);
     }
   }
@@ -43,8 +45,8 @@ class PhoneStore {
     this.shoppingCart.push(phone);
   }
 
-  addFunds(funds: number) {
-    this.funds += funds;
+  addFunds(amount: number) {
+    this.funds += amount;
   }
 
   removeFromWishlist(phone: Phone) {
@@ -55,6 +57,10 @@ class PhoneStore {
   removeFromShoppingCart(phone: Phone) {
     const index = this.shoppingCart.indexOf(phone);
     this.shoppingCart.splice(index, 1);
+  }
+
+  checkout() {
+    this.funds -= this.cartTotal;
   }
 }
 

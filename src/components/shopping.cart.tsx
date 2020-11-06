@@ -10,10 +10,11 @@ export const ShoppingCart: React.FC = observer(() => {
 
     return (
         <div>
-            <h2>Shopping cart component</h2>
+            <h2>Shopping cart</h2>
+            <h4>Cart total: ${store.cartTotal}</h4>
             <div className='side-container'>
                 {store.shoppingCart.map(phone =>
-                    <Card main={false} key={phone.model}>
+                    <Card main={false} key={Math.random()}>
                         <ul>
                             <li>Make: {phone.make}</li>
                             <li>Model: {phone.model}</li>
