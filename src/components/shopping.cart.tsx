@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import './side.panel.css'
-import { StoreContext } from '..';
+import { StoreContext } from '../App';
 import { MyButton } from '../stories/myButton';
 import { Card } from '../stories/Card';
 

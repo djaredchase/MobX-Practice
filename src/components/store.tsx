@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { StoreContext } from '../index';
+import { StoreContext } from '../App';
 import './store.css';
 import { Phone } from '../data/phones';
 import { MyButton } from '../stories/myButton';

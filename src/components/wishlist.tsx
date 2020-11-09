@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
-import { StoreContext } from '..';
+import { StoreContext } from '../App';
 import './side.panel.css';
 import { MyButton } from '../stories/myButton';
 import { Card } from '../stories/Card';
